@@ -7,6 +7,7 @@ const {
   productIdFromService,
   productsFromModel,
   productIdFromModel,
+  productInsertFromService,
 } = require('../mocks/products.mock');
 
 describe('Teste - PRODUCTS SERVICE', function () {
@@ -26,6 +27,16 @@ describe('Teste - PRODUCTS SERVICE', function () {
 
     expect(product).to.be.an('object');
     expect(product).to.be.deep.equal(productIdFromService);
+  });
+
+  it('Testando a função insert - PRODUCTS SERVICE', async function () {
+    sinon.stub(productsModel, 'insert').resolves(productInsertFromService.data);
+
+    const productName = 'Livro Mágico';
+    const insert = await productsService.insert(productName);
+
+    expect(insert).to.be.an('object');
+    expect(insert).to.be.deep.equal(productInsertFromService);
   });
 
   afterEach(function () {

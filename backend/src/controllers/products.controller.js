@@ -12,7 +12,15 @@ const getById = async (req, res) => {
   return res.status(mapStatusHTTP(status)).json(data);
 };
 
+const postInsert = async (req, res) => {
+  const { name } = req.body;
+  const { status, data } = await productsService.insert(name);
+  const dataFormatted = { id: data, name };
+  return res.status(mapStatusHTTP(status)).json(dataFormatted);
+};
+
 module.exports = {
   getAll,
   getById,
+  postInsert,
 };

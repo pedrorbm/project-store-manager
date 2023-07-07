@@ -10,7 +10,13 @@ const findById = async (idProduct) => {
   return { status: 'SUCCESSFUL', data: product };
 };
 
+const insert = async (nameProduct) => {
+  const insertId = await productsModel.insert(nameProduct);
+  return { status: 'CREATED', data: insertId };
+};
+
 module.exports = {
   findAll,
   findById,
+  insert,
 };

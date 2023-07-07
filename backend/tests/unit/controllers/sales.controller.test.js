@@ -13,7 +13,7 @@ const {
 
 chai.use(sinonChai);
 
-describe('Teste - PRODUCTS CONTROLLER', function () {
+describe('Teste - SALES CONTROLLER', function () {
   it('Testando a função getAll - SALES CONTROLLER', async function () {
     sinon.stub(salesService, 'findAll').resolves(salesFromService);
 
