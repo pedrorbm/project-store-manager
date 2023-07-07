@@ -7,8 +7,8 @@ const {
 
 const route = express.Router();
 
-route.get('/', productsValidationAll, productsController.findAll);
+route.get('/', productsValidationAll, productsController.getAll);
 
-route.get('/:idProduct', productsValidationById, productsController.findById);
+route.get('/:idProduct', productsValidationById, productsController.getById);
 
 module.exports = route;

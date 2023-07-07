@@ -5,7 +5,7 @@ const { productsModel } = require('../../../src/models');
 const { productsFromModel, productIdFromModel } = require('../mocks/products.mock');
 
 describe('Teste - PRODUCTS MODEL', function () {
-  it('Testando o retorno de todos os produtos', async function () {
+  it('Testando a função findAll - PRODUCTS MODEL', async function () {
     sinon.stub(connection, 'execute').resolves([productsFromModel]);
 
     const products = await productsModel.findAll();
@@ -14,7 +14,7 @@ describe('Teste - PRODUCTS MODEL', function () {
     expect(products).to.be.deep.equal(productsFromModel);
   });
 
-  it('Testando o retorno de um produto pelo ID', async function () {
+  it('Testando a função findById - PRODUCTS MODEL', async function () {
     sinon.stub(connection, 'execute').resolves([[productIdFromModel]]);
 
     const productId = 1;
