@@ -20,7 +20,23 @@ const productsValidationById = async (req, res, next) => {
   next();
 };
 
+const productsValidationInsert = async (req, res, next) => {
+  const { body } = req;
+
+  if (!body.name) {
+    return res.status(mapStatusHTTP('REQUIRED')).json({ message: '"name" is required' });
+  }
+
+  if (body.name.length < 5) {
+    return res.status(mapStatusHTTP('INVALID_VALUE'))
+      .json({ message: '"name" length must be at least 5 characters long' });
+  }
+
+  next();
+};
+
 module.exports = {
   productsValidationAll,
   productsValidationById,
+  productsValidationInsert,
 };
