@@ -18,7 +18,15 @@ const getById = async (req, res) => {
   return res.status(mapStatusHTTP(status)).json(dataFormatted);
 };
 
+const postInsert = async (req, res) => {
+  const { body } = req;
+  const { status, data } = await salesService.insert(body);
+  const dataFormatted = { id: data, itemsSold: body };
+  return res.status(mapStatusHTTP(status)).json(dataFormatted);
+};
+
 module.exports = {
   getAll,
   getById,
+  postInsert,
 };

@@ -42,6 +42,23 @@ const salesFromController = { status: 200, data: salesFromModel };
 
 const saleIdFromController = { status: 200, data: saleIdFromModel };
 
+const insertIdFromService = 3;
+
+const salesInsertFromModel = [
+  {
+    productId: 1,
+    quantity: 1,
+  },
+  {
+    productId: 2,
+    quantity: 5,
+  },
+];
+
+const salesInsertFromService = { status: 'CREATED', data: insertIdFromService };
+
+const salesInsertFromController = { id: insertIdFromService, itemsSold: salesInsertFromModel };
+
 module.exports = {
   salesFromModel,
   saleIdFromModel,
@@ -49,4 +66,7 @@ module.exports = {
   saleIdFromService,
   salesFromController,
   saleIdFromController,
+  salesInsertFromModel,
+  salesInsertFromService,
+  salesInsertFromController,
 };

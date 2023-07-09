@@ -7,6 +7,8 @@ const {
   saleIdFromService,
   salesFromModel,
   saleIdFromModel,
+  salesInsertFromService,
+  salesInsertFromModel,
 } = require('../mocks/sales.mock');
 
 describe('Teste - SALES SERVICE', function () {
@@ -26,6 +28,15 @@ describe('Teste - SALES SERVICE', function () {
 
     expect(sale).to.be.an('object');
     expect(sale).to.be.deep.equal(saleIdFromService);
+  });
+
+  it('Testando a função insert - SALES SERVICE', async function () {
+    sinon.stub(salesModel, 'insert').resolves(3);
+
+    const insert = await salesService.insert(salesInsertFromModel);
+
+    expect(insert).to.be.an('object');
+    expect(insert).to.be.deep.equal(salesInsertFromService);
   });
 
   afterEach(function () {
