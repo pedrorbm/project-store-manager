@@ -20,8 +20,13 @@ const getById = async (req, res) => {
 
 const postInsert = async (req, res) => {
   const { body } = req;
+  console.log(body[0]);
   const { status, data } = await salesService.insert(body);
   const dataFormatted = { id: data, itemsSold: body };
+  if (status !== 'CREATED') {
+    return res.status(mapStatusHTTP(status)).json(data);
+  }
+
   return res.status(mapStatusHTTP(status)).json(dataFormatted);
 };
 

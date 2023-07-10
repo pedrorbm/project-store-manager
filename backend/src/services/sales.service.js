@@ -1,4 +1,7 @@
 const { salesModel } = require('../models');
+const { 
+  validateInsert,
+} = require('./validations/validationsInputValues');
 
 const findAll = async () => {
   const sales = await salesModel.findAll();
@@ -11,6 +14,9 @@ const findById = async (idSale) => {
 };
 
 const insert = async (array) => {
+  const error = validateInsert(array[0]);
+  if (error) return { status: error.status, data: { message: error.message } };
+
   const insertId = await salesModel.insert(array);
   return { status: 'CREATED', data: insertId };
 };
