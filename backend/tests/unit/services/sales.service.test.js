@@ -9,6 +9,8 @@ const {
   saleIdFromModel,
   salesInsertFromService,
   salesInsertFromModel,
+  salesInsertErrorFromService,
+  salesInsertErrorResultFromService,
 } = require('../mocks/sales.mock');
 
 describe('Teste - SALES SERVICE', function () {
@@ -30,13 +32,22 @@ describe('Teste - SALES SERVICE', function () {
     expect(sale).to.be.deep.equal(saleIdFromService);
   });
 
-  it('Testando a função insert - SALES SERVICE', async function () {
+  it('Testando a função insert sem erro - SALES SERVICE', async function () {
     sinon.stub(salesModel, 'insert').resolves(3);
 
     const insert = await salesService.insert(salesInsertFromModel);
 
     expect(insert).to.be.an('object');
     expect(insert).to.be.deep.equal(salesInsertFromService);
+  });
+
+  it('Testando a função insert com erro - SALES SERVICE', async function () {
+    sinon.stub(salesModel, 'insert').resolves(3);
+
+    const insert = await salesService.insert(salesInsertErrorFromService);
+
+    expect(insert).to.be.an('object');
+    expect(insert).to.be.deep.equal(salesInsertErrorResultFromService);
   });
 
   afterEach(function () {

@@ -59,6 +59,33 @@ const salesInsertFromService = { status: 'CREATED', data: insertIdFromService };
 
 const salesInsertFromController = { id: insertIdFromService, itemsSold: salesInsertFromModel };
 
+const validateInsertProductId = { productI: 2, quantity: 2 };
+
+const validateInsertProductIdResult = { status: 'REQUIRED', message: '"productId" is required' };
+
+const validateInsertQuantity = { productId: 2, quantit: 2 };
+
+const validateInsertQuantityResult = { status: 'REQUIRED', message: '"quantity" is required' };
+
+const validateInsertQuantityMin = { productId: 2, quantity: 0 };
+
+const validateInsertQuantityMinResult = { 
+  status: 'INVALID_VALUE',
+  message: '"quantity" must be greater than or equal to 1',
+};
+
+const salesInsertErrorFromService = [
+  {
+    productI: 1,
+    quantity: 1,
+  },
+];
+
+const salesInsertErrorResultFromService = {
+  status: 'REQUIRED',
+  data: { message: '"productId" is required' },
+};
+
 module.exports = {
   salesFromModel,
   saleIdFromModel,
@@ -69,4 +96,12 @@ module.exports = {
   salesInsertFromModel,
   salesInsertFromService,
   salesInsertFromController,
+  validateInsertProductId,
+  validateInsertProductIdResult,
+  validateInsertQuantity,
+  validateInsertQuantityResult,
+  validateInsertQuantityMin,
+  validateInsertQuantityMinResult,
+  salesInsertErrorFromService,
+  salesInsertErrorResultFromService,
 };
