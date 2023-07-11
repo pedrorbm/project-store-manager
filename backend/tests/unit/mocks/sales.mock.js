@@ -86,6 +86,18 @@ const salesInsertErrorResultFromService = {
   data: { message: '"productId" is required' },
 };
 
+const salesInsertResultFromController = [
+  {
+    productId: 1,
+    quantity: 1,
+  },
+];
+
+const salesInsertErrorFromController = {
+  id: insertIdFromService,
+  itemsSold: salesInsertResultFromController, 
+};
+
 module.exports = {
   salesFromModel,
   saleIdFromModel,
@@ -104,4 +116,5 @@ module.exports = {
   validateInsertQuantityMinResult,
   salesInsertErrorFromService,
   salesInsertErrorResultFromService,
+  salesInsertErrorFromController,
 };

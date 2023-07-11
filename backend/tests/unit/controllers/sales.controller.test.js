@@ -11,6 +11,7 @@ const {
   saleIdFromModel,
   salesInsertFromController,
   salesInsertFromService,
+  salesInsertErrorFromController,
 } = require('../mocks/sales.mock');
 
 chai.use(sinonChai);
@@ -79,7 +80,7 @@ describe('Teste - SALES CONTROLLER', function () {
     await salesController.postInsert(req, res);
 
     expect(res.status).to.have.been.calledWith(201);
-    expect(res.json).to.have.been.calledWith(salesInsertFromController);
+    expect(res.json).to.have.been.calledWith(salesInsertErrorFromController);
   });
 
   afterEach(function () {
