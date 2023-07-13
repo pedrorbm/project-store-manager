@@ -74,18 +74,6 @@ const validateInsertQuantityMinResult = {
   message: '"quantity" must be greater than or equal to 1',
 };
 
-const salesInsertErrorFromService = [
-  {
-    productI: 1,
-    quantity: 1,
-  },
-];
-
-const salesInsertErrorResultFromService = {
-  status: 'REQUIRED',
-  data: { message: '"productId" is required' },
-};
-
 const salesInsertResultFromController = [
   {
     productId: 1,
@@ -114,7 +102,5 @@ module.exports = {
   validateInsertQuantityResult,
   validateInsertQuantityMin,
   validateInsertQuantityMinResult,
-  salesInsertErrorFromService,
-  salesInsertErrorResultFromService,
   salesInsertErrorFromController,
 };

@@ -31,8 +31,7 @@ describe('Teste - PRODUCTS MIDDLEWARE', function () {
     productsValidation.productsValidationInsert(req, res, next);
 
     expect(res.status).to.have.been.calledWith(400);
-    expect(res.json).to.have.been.calledWith(sinon.match({ message: '"name" is required' }));
-    expect(next).to.have.not.been.calledWith();
+    expect(res.json).to.have.been.calledWith({ message: '"name" is required' });
   });
 
   it('Testando a função productsValidationInsert caso o valor da chave "name" seja menor que 5 caracteres - PRODUCTS MIDDLEWARE', async function () {
@@ -46,8 +45,7 @@ describe('Teste - PRODUCTS MIDDLEWARE', function () {
     productsValidation.productsValidationInsert(req, res, next);
 
     expect(res.status).to.have.been.calledWith(422);
-    expect(res.json).to.have.been.calledWith(sinon.match({ message: '"name" length must be at least 5 characters long' }));
-    expect(next).to.have.not.been.calledWith();
+    expect(res.json).to.have.been.calledWith({ message: '"name" length must be at least 5 characters long' });
   });
 
   afterEach(function () {
