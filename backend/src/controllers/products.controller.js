@@ -22,8 +22,9 @@ const postInsert = async (req, res) => {
 const putUpdate = async (req, res) => {
   const { idProduct } = req.params;
   const { name } = req.body;
-  const { status } = await productsService.update(name, idProduct);
-  const dataFormatted = { id: idProduct, name };
+  const idNumber = Number(idProduct);
+  const { status } = await productsService.update(name, idNumber);
+  const dataFormatted = { id: idNumber, name };
   return res.status(mapStatusHTTP(status)).json(dataFormatted);
 };
 
