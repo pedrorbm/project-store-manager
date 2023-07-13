@@ -3,7 +3,6 @@ const sinon = require('sinon');
 const chai = require('chai');
 const sinonChai = require('sinon-chai');
 const salesValidation = require('../../../src/middlewares/salesValidation');
-const { salesModel } = require('../../../src/models');
 
 chai.use(sinonChai);
 
@@ -84,7 +83,7 @@ describe('Teste - SALES MIDDLEWARE', function () {
     expect(next).to.have.been.calledWith();
   });
 
-  it('Testando a função salesValidationQuantity caso esteja sem a chave "quantity" - SALES MIDDLEWARE', async function () {
+  it('Testando a função salesValidationQuantity caso esteja sem a chave "quantity"- SALES MIDDLEWARE', async function () {
     const req = { 
       params: { }, 
       body: [
