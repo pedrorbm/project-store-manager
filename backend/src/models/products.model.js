@@ -24,10 +24,11 @@ const insert = async (nameProduct) => {
 };
 
 const update = async (nameProduct, idProduct) => {
-  await connection.execute(
+  const [{ affectedRows }] = await connection.execute(
     'UPDATE products SET name = ? WHERE id = ?;',  
     [nameProduct, idProduct],
   );
+  return affectedRows;
 };
 
 module.exports = {

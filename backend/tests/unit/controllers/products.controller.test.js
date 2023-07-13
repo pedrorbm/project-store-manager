@@ -61,6 +61,21 @@ describe('Teste - PRODUCTS CONTROLLER', function () {
     expect(res.json).to.have.been.calledWith(postInsertFromController);
   });
 
+  it('Testando a função putUpdate - PRODUCTS CONTROLLER', async function () {
+    sinon.stub(productsService, 'update').resolves({ status: 'SUCCESSFUL' });
+
+    const req = { params: { idProduct: 1 }, body: { name: 'pedroo' } };
+    const res = {
+        status: sinon.stub().returnsThis(),
+        json: sinon.stub(),
+    };
+
+    await productsController.putUpdate(req, res);
+
+    expect(res.status).to.have.been.calledWith(200);
+    expect(res.json).to.have.been.calledWith({ id: 1, name: 'pedroo' });
+  });
+
   afterEach(function () {
     sinon.restore();
   });

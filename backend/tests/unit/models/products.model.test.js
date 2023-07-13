@@ -33,6 +33,14 @@ describe('Teste - PRODUCTS MODEL', function () {
     expect(insert).to.be.deep.equal(4);
   });
 
+  it('Testando a função update - PRODUCTS MODEL', async function () {
+    sinon.stub(connection, 'execute').resolves([{ affectedRows: 1 }]);
+
+    const update = await productsModel.update('pedroo', 1);
+
+    expect(update).to.be.deep.equal(1);
+  });
+
   afterEach(function () {
     sinon.restore();
   });

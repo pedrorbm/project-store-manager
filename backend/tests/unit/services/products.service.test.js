@@ -39,6 +39,15 @@ describe('Teste - PRODUCTS SERVICE', function () {
     expect(insert).to.be.deep.equal(productInsertFromService);
   });
 
+  it('Testando a função update - PRODUCTS SERVICE', async function () {
+    sinon.stub(productsModel, 'update').resolves(1);
+
+    const update = await productsService.update('pedroo', 1);
+
+    expect(update).to.be.an('object');
+    expect(update).to.be.deep.equal({ status: 'SUCCESSFUL' });
+  });
+
   afterEach(function () {
     sinon.restore();
   });
