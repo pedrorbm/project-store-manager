@@ -19,8 +19,17 @@ const postInsert = async (req, res) => {
   return res.status(mapStatusHTTP(status)).json(dataFormatted);
 };
 
+const putUpdate = async (req, res) => {
+  const { idProduct } = req.params;
+  const { name } = req.body;
+  const { status } = await productsService.update(name, idProduct);
+  const dataFormatted = { id: idProduct, name };
+  return res.status(mapStatusHTTP(status)).json(dataFormatted);
+};
+
 module.exports = {
   getAll,
   getById,
   postInsert,
+  putUpdate,
 };

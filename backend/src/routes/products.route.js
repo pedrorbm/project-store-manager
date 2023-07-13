@@ -14,4 +14,11 @@ route.get('/:idProduct', productsValidationById, productsController.getById);
 
 route.post('/', productsValidationInsert, productsController.postInsert);
 
+route.put(
+  '/:idProduct',
+  productsValidationInsert,
+  productsValidationById,
+  productsController.putUpdate,
+);
+
 module.exports = route;
